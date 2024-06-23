@@ -1,0 +1,4 @@
+name: DoubleJump
+version: '${version}'
+main: cc.sakurua.doublejump.DoubleJump
+api-version: '1.20'
