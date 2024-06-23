@@ -1,6 +1,7 @@
 package cc.sakurua.doublejump.listeners;
 
 import cc.sakurua.doublejump.DoubleJump;
+import com.destroystokyo.paper.event.player.PlayerJumpEvent;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.Sound;
@@ -8,14 +9,13 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.util.Vector;
 
 public class JumpListener implements Listener {
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event) {
+    public void onPlayerJump(PlayerJumpEvent event) {
         event.getPlayer().setAllowFlight(true);
     }
 
@@ -30,6 +30,7 @@ public class JumpListener implements Listener {
                         .setY(DoubleJump.height);
                 player.setVelocity(vector);
                 player.playSound(player.getLocation(), Enum.valueOf(Sound.class, DoubleJump.sound), 10, 1);
+                player.setAllowFlight(false);
             }
         }
     }

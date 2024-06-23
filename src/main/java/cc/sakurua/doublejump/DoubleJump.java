@@ -10,8 +10,11 @@ public final class DoubleJump extends JavaPlugin {
     public static int height;
     public static String sound;
 
+    private static DoubleJump instance;
+
     @Override
     public void onEnable() {
+        instance = this;
         loadConfig();
         getServer().getPluginManager().registerEvents(new JumpListener(), this);
     }
@@ -27,6 +30,10 @@ public final class DoubleJump extends JavaPlugin {
             distance = config.getInt("distance");
             height = config.getInt("height");
             sound = config.getString("sound");
+    }
+
+    public static DoubleJump getInstance() {
+        return instance;
     }
 
 }
